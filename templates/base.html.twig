@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+                {{ pageVars['title'] | json_encode }}
+            {% endblock %}
+        </title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block navbar %}
+            <!-- Desktop Navbar -->
+            <div id="navbar" class="font-size-s font-color-darkest bg-transparent nav">
+                <ul class="flex flex-dir-row flex-content-justify-end nav">
+                    <li class="nav-logo flex flex-align-items-center flex-content-justify-center"><a href="/"><img class="cursor-pointer" height="85px" src="https://thumbs.dreamstime.com/b/e-r-160455059.jpg"></a></li>
+                    <li class="nav-item flex flex-align-items-center flex-content-justify-center"><a class="font-size-m" href="/register"><strong>Register</strong></a></li>
+                    <li class="nav-item flex flex-align-items-center flex-content-justify-center"><a class="font-size-m" href="/"><strong>Login</strong></a></li>
+                </ul>    
+            </div>
+        {% endblock navbar %}
+    
+        {% block headline %}
+            <div class="curve">
+                <h2 class="headline font-size-l flex flex-align-items-center font-color-white"> {{ pageVars['headline'] | replace({'"':'\''}) }} </h2>
+            </div>
+        {% endblock headline %}
+
+        <!-- Pages will be rendered in #app -->
+        <!-- Pages location: components/app/ -->
+        <div id="app">
+            {% block body %}{% endblock body %}
+        </div>
+
+        {% block footer %}{% endblock footer %}
+    </body>
+
+    <script>
+
+        // Global function to toggle between desktop and mobile navbar
+        function toggleMobileMenu () {
+            const mobileMenuTrigger = document.getElementById('menu_checkbox')
+            const mobileMenu = document.getElementById('mobile_menu')
+
+            mobileMenuTrigger.checked ? mobileMenu.classList.remove('menu-hidden') : mobileMenu.classList.add('menu-hidden')
+        }
+
+        function removeStringsHelper(originalString, replacement) {
+
+            for (stringPair in replacement) {
+                originalString.replace(stringPair[0], stringPair[1])
+                console.log(originalString)
+            }
+            return originalString
+        }
+    
+    //document.getElementById('menu_checkbox').addEventListener('click', toggleMobileMenu)
+    </script>
+
+    {% block javascripts %}{% endblock %}
+</html>
+

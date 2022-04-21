@@ -1,0 +1,56 @@
+@import '../color_palette.scss';
+
+.font {
+    &-size {
+        &-l{
+            font-size: 3rem;
+        }
+    
+        &-m{
+            font-size: 2rem;
+        }
+    
+        &-s{
+            font-size: 1rem;
+        }
+    
+        &-xs{
+            font-size: 0.5rem;
+        }
+    }
+
+    &-color {
+        &-white {
+            color: $white;
+        }
+        &-darkest {
+            color: $darkest;
+        }
+
+        &-darker {
+            color: $darker;
+        }
+
+        &-dark {
+            color: $dark;
+        }
+
+        &-medium {
+            color: $medium;
+        }
+
+        &-light {
+            color: $light;
+        }
+
+        &-lightest {
+            color: $lightest;
+        }
+    }
+
+    &-position {
+        &-center {
+            text-align: center;
+        }
+    }
+}

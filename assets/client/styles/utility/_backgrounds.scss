@@ -1,0 +1,31 @@
+@import '../color_palette.scss';
+
+.bg {
+    &-transparent {
+        background-color: transparent;
+    }
+
+    &-darkest {
+        background-color: $darkest;
+    }
+
+    &-darker {
+        background-color: $darker;
+    }
+
+    &-dark {
+        background-color: $dark;
+    }
+
+    &-medium {
+        background-color: $medium;
+    }
+
+    &-light {
+        background-color: $light;
+    }
+
+    &-lightest {
+        background-color: $lightest;
+    }
+}

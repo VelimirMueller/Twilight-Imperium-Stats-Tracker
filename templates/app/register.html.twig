@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ pageVars['title'] | json_encode }}
+{% endblock title %}
+
+{% block body %}
+    <register :page-vars="{{ pageVars | json_encode }}"></register>
+{% endblock body %}
+    
+{% block javascripts %}
+    {{ encore_entry_script_tags('app_register') }}
+{% endblock %}

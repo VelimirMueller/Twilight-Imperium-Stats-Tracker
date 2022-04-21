@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <index :page-vars="{{ pageVars | json_encode }}"></index>
+{% endblock body %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app_index') }}
+{% endblock %}

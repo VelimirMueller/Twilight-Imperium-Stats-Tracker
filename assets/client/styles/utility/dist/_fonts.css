@@ -1,0 +1,36 @@
+.font-size-l {
+  font-size: 3rem;
+}
+.font-size-m {
+  font-size: 2rem;
+}
+.font-size-s {
+  font-size: 1rem;
+}
+.font-size-xs {
+  font-size: 0.5rem;
+}
+.font-color-white {
+  color: white;
+}
+.font-color-darkest {
+  color: #232343;
+}
+.font-color-darker {
+  color: #2B4162;
+}
+.font-color-dark {
+  color: #385F71;
+}
+.font-color-medium {
+  color: #E6681B;
+}
+.font-color-light {
+  color: #6BC7F3;
+}
+.font-color-lightest {
+  color: #B6D273;
+}
+.font-position-center {
+  text-align: center;
+}

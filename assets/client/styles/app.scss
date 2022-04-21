@@ -1,0 +1,30 @@
+@import './color_palette.scss';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    max-width: 100vw;
+    background-color: transparent;
+}
+
+.cursor-pointer:hover {
+    cursor: pointer;
+}
+
+.component-container {
+    width: 100%;
+    background-color: $white;
+}
+
+.headline {
+    background-color: $darkest;
+    color: $white;
+    margin: 0 0 0 0 !important;
+    padding-left: 25px !important;
+    height: 3em;
+    font-family: 'Kanit', sans-serif;
+}
+

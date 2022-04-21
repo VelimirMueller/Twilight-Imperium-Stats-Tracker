@@ -1,0 +1,52 @@
+@import '../color_palette.scss';
+
+.nav {
+    margin: 0 0 0 0 !important;
+    font-family: 'Kanit', sans-serif;
+
+    & > li > * {
+        transition: color 1s, background-color 1s ease-out;
+    }
+
+    &-item > a, &-button, &-logo {
+        list-style-type: none;
+        margin-right: 2rem;
+    }
+
+    &-button:hover {
+        background-color: $light;
+    }
+
+    &-item > a {
+        text-decoration: none;
+        color: $darker;
+
+        &:hover {
+            color: $light;
+        }
+    }
+
+    &-logo {
+        margin-right: auto;
+    }
+}
+
+// Curve Design created with a relative wrapper and absolute ::before && ::after
+.curve {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+
+    &::before {
+    content: "";
+    position: absolute;
+    width: 69vw;
+    height: 128%;
+    left: 60vw;
+    transform: translate(-11%, 29%);
+    background-color: white;
+    border-radius: 102% 7%;
+    min-width: 250px;
+    }
+}

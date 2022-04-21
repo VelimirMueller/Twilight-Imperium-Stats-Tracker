@@ -1,0 +1,21 @@
+.bg-transparent {
+  background-color: transparent;
+}
+.bg-darkest {
+  background-color: #232343;
+}
+.bg-darker {
+  background-color: #2B4162;
+}
+.bg-dark {
+  background-color: #385F71;
+}
+.bg-medium {
+  background-color: #E6681B;
+}
+.bg-light {
+  background-color: #6BC7F3;
+}
+.bg-lightest {
+  background-color: #B6D273;
+}
