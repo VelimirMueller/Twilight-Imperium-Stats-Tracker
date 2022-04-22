@@ -16,6 +16,7 @@ import '../../../assets/client/styles/utility/_fonts.scss';
 import '../../../assets/client/styles/utility/_backgrounds.scss';
 import '../../../assets/client/styles/utility/_flexbox.scss';
 import '../../../assets/client/styles/utility/_height.scss';
+import '../../../assets/client/styles/utility/_dynamics.scss';
 
 //page layouts
 import '../../../assets/client/styles/components/_index.scss';

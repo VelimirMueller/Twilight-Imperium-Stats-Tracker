@@ -5,7 +5,11 @@
     font-family: 'Kanit', sans-serif;
 
     & > li > * {
-        transition: color 1s, background-color 1s ease-out;
+        transition: 
+            color 1s, 
+            background-color 1s ease-out, 
+            box-shadow 1s ease-in-out, 
+            text-decoration-color 1s ease-in-out;
     }
 
     &-item > a, &-button, &-logo {
@@ -18,16 +22,33 @@
     }
 
     &-item > a {
-        text-decoration: none;
+        text-decoration: underline;
+        text-decoration-color: white;
         color: $darker;
 
         &:hover {
             color: $light;
+            text-decoration-color: $light;
         }
     }
 
     &-logo {
         margin-right: auto;
+    }
+
+    &-profile {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        box-shadow: 6px 5px 2px 1px $darkest;
+
+        &:hover {
+            box-shadow: 2px 2px 2px 1px $light;
+        }
+
+        &:focus {
+            box-shadow: 2px 2px 2px 1px $darkest;
+        }
     }
 }
 
@@ -35,18 +56,19 @@
 .curve {
     position: relative;
     width: 100%;
-    overflow: hidden;
     height: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     &::before {
-    content: "";
-    position: absolute;
-    width: 69vw;
-    height: 128%;
-    left: 60vw;
-    transform: translate(-11%, 29%);
-    background-color: white;
-    border-radius: 102% 7%;
-    min-width: 250px;
+        content: '';
+        position: absolute;
+        width: 56vw;
+        height: 56%;
+        left: 60vw;
+        transform: translate(-29%, 82%);
+        background-color: white;
+        border-radius: 113% 0% 0% 20px;
+        min-width: 250px;
     }
 }

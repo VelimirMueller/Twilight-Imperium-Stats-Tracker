@@ -1,3 +1,21 @@
 .space-stack-s > * {
     margin-bottom: 50px;
 }
+
+.m {
+    &-0 {
+        margin: 0 0 0 0 !important;
+    }
+
+    &-top-xs {
+        margin-top: 5px !important;
+    }
+
+    &-r-s {
+        margin-right: 10px;
+    }
+
+    &-r-m {
+        margin-right: 25px;
+    }
+}

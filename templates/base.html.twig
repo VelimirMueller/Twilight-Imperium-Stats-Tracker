@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>
             {% block title %}
-                {{ pageVars['title'] | json_encode }}
+                {{ pageVars['title'] | json_encode | replace({'"':''}) }}
             {% endblock %}
         </title>
 
@@ -18,8 +18,17 @@
             <div id="navbar" class="font-size-s font-color-darkest bg-transparent nav">
                 <ul class="flex flex-dir-row flex-content-justify-end nav">
                     <li class="nav-logo flex flex-align-items-center flex-content-justify-center"><a href="/"><img class="cursor-pointer" height="85px" src="https://thumbs.dreamstime.com/b/e-r-160455059.jpg"></a></li>
-                    <li class="nav-item flex flex-align-items-center flex-content-justify-center"><a class="font-size-m" href="/register"><strong>Register</strong></a></li>
-                    <li class="nav-item flex flex-align-items-center flex-content-justify-center"><a class="font-size-m" href="/"><strong>Login</strong></a></li>
+                    <li class="nav-item flex flex-align-items-center flex-content-justify-center"><a class="font-size-m animate-underline" href="/register"><strong class="font-shadow">Register</strong></a></li>
+                    <li class="nav-item flex flex-align-items-center flex-content-justify-center"><a class="font-size-m animate-underline" href="/"><strong class="font-shadow">Login</strong></a></li>
+                    <li class="nav-item flex flex-align-items-center flex-content-justify-center">
+                        <div class="nav-profile m-r-m cursor-pointer flex flex-align-items-center flex-content-justify-center" type="checkbox">
+                            <div class="hamburger" id="hamburger-wrapper">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                    </li>
                 </ul>    
             </div>
         {% endblock navbar %}
@@ -43,21 +52,19 @@
 
         // Global function to toggle between desktop and mobile navbar
         function toggleMobileMenu () {
-            const mobileMenuTrigger = document.getElementById('menu_checkbox')
-            const mobileMenu = document.getElementById('mobile_menu')
+            const wrapper = document.getElementsByClassName('nav-profile')[0]
+            const hamburger = document.getElementById('hamburger-wrapper')
 
-            mobileMenuTrigger.checked ? mobileMenu.classList.remove('menu-hidden') : mobileMenu.classList.add('menu-hidden')
+            wrapper.addEventListener('click', () => {
+                hamburger.classList.toggle('is-active')
+            })
         }
 
-        function removeStringsHelper(originalString, replacement) {
-
-            for (stringPair in replacement) {
-                originalString.replace(stringPair[0], stringPair[1])
-                console.log(originalString)
-            }
-            return originalString
-        }
-    
+        window.addEventListener("load", function(event) {
+            toggleMobileMenu()
+        })
+            
+        
     //document.getElementById('menu_checkbox').addEventListener('click', toggleMobileMenu)
     </script>
 

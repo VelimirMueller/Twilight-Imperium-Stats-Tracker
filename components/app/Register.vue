@@ -1,6 +1,6 @@
 <template>
    <div class="component-container">
-       <h2 class="font-position-center">Vue component name: {{ cleanHeadline }}</h2>
+       <h2 class="m-0">Vue component name: {{ cleanHeadline }}</h2>
    </div>
 </template>
 
