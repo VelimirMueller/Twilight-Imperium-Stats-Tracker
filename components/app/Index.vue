@@ -3,17 +3,17 @@
        <h2 class="m-0">Vue component name: {{ cleanHeadline }}</h2>
    </div>
 
-   <loading-spinner :isLoading="true" :isFullPage="true"></loading-spinner>
+   <image-loader></image-loader>
 </template>
 
 <script>
-import LoadingSpinner from '../core/loadingSpinner/LoadingSpinner.vue'
+import ImageLoader from '../core/imageLoader/ImageLoader.vue'
 
 export default {
     name: "Index",
 
     components: {
-        LoadingSpinner
+        ImageLoader
     },
 
     props: {

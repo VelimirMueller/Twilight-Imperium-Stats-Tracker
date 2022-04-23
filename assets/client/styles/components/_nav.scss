@@ -61,14 +61,23 @@
     scrollbar-width: none;
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 56vw;
-        height: 56%;
+        height: 28%;
         left: 60vw;
-        transform: translate(-29%, 82%);
+        transform: translate(-28%, 268%);
         background-color: white;
-        border-radius: 113% 0% 0% 20px;
+        border-radius: 491% 9% 4% 24px;
         min-width: 250px;
     }
+}
+
+.headline {
+    background-color: $darkest;
+    color: $white;
+    margin: 0 0 0 0 !important;
+    padding-left: 25px !important;
+    height: 3em;
+    font-family: 'Kanit', sans-serif;
 }

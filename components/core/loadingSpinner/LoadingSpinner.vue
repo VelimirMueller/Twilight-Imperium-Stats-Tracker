@@ -1,7 +1,22 @@
 <template>
-    <div id="spinner" v-if="loadData" class="w-100 flex flex-align-items-center flex-content-justify-center">
-        <div id="spinner-element" class="absolute">
-            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div 
+        id="spinner" 
+        v-if="!!loadingData">
+
+        <div 
+            id="spinner-element" 
+            :class="classList">
+            
+            <div class="spinner">
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+            </div>
         </div>
     </div>
 </template>
@@ -13,7 +28,8 @@ export default {
     props: {
         classList: {
             type: String,
-            required: false
+            required: false,
+            default: ""
         },
 
         isLoading: {
@@ -30,24 +46,9 @@ export default {
     },
 
     computed: {
-        loadData () {
+        loadingData () {
             return this.isLoading
         },
-
-        renderFullPage () {
-            return this.isFullPage
-        }
-    },
-
-    mounted () {
-        window.addEventListener("load", () => {
-            if (!!this.isFullPage) {
-                const self = document.getElementById('spinner')
-                self.style.height = window.innerHeight - self.offsetTop - 45 + 'px'
-            }
-
-            console.log(this.renderFullPage)
-        })
     }
 }
 </script>

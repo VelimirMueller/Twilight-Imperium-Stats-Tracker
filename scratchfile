@@ -1,0 +1,256 @@
+<template>
+    <div class="font-family-kanit">
+        <loading-spinner 
+            :isLoading="!!loaderSettings.data.isLoading" />
+
+        <img v-if="!loaderSettings.data.isLoading && !!loaderSettings.data.isImageSrc"
+            :src="inputImageSrc ? inputImageSrc : '#'" 
+            :class="classList"
+            :width="loaderSettings.image.settings.width" 
+            :height="loaderSettings.image.settings.height" 
+            :alt="loaderSettings.image.imgAlt">
+
+        <div class="flex">
+            <label for="url"> {{ }} </label>
+            <input 
+                type="url" 
+                label="imageLink" 
+                v-model="loaderSettings.image.imgSrc">
+        
+            <button @click.prevent="loadImage">
+                load image
+            </button>
+        </div>
+
+        <p v-text="texts.imgSrcDesc + loaderSettings.image.imgSrc" />
+
+    </div>
+</template>
+
+<script>
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner.vue'
+
+export default {
+    name: 'ImageLoader',
+
+    components: {
+        LoadingSpinner
+    },
+
+    props: {
+        classList: {
+            type: String,
+            required: false,
+            default: ''
+        },
+
+        fullPageSpinner: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+    },
+
+    data() {
+        return {
+            loaderSettings: {
+                data: {
+                    isLoading: false,
+                    loadingUrl: '',
+                    isImageSrc: false
+                },
+
+                image: {
+                    skeletonSrc: '',
+                    skeletonAlt: '',
+                    imgSrc: '',
+                    imgAlt: '',
+                    settings: {
+                        width: '400',
+                        height: '250',
+                        timeout: 500,
+                    }
+                },
+
+                input: {
+                    type: 'text'
+                }
+            },
+
+            texts: {
+                imgSrcDesc: '',
+                warnings: {
+                    loadingData: 'something went wrong while loading the image. Here, the error: '
+                }
+            }           
+        }
+    },
+
+    computed: {
+        inputImageSrc () {
+            return this.loaderSettings.data.loadingUrl
+        }
+    },
+
+    methods: {
+        loadImage () {
+            this.loaderSettings.data.isLoading = true
+
+            try {
+                fetch(this.loaderSettings.image.imgSrc)
+                    .then(data => console.log(data))
+                console.log('try works')
+            } 
+            catch (error) {
+                console.warn(this.loaderSettings.warnings.loadingData + JSON.stringify(error))
+                // Do not show image on error
+                return false
+            }
+            finally {
+                this.loaderSettings.data.loadingUrl = this.loaderSettings.image.imgSrc
+                console.log('finally works')
+
+                this.loaderSettings.data.isImageSrc = true
+
+                window.setTimeout(() => {
+                    this.loaderSettings.data.isLoading = false
+                }, this.loaderSettings.image.settings.timeout)
+            }
+        }
+    },
+
+    mounted () {
+        console.log(this.loaderSettings.data.isImageSrc)
+    }
+}
+</script>
+
+
+<template>
+    <div class="loadingWrapper font-family-kanit">
+        <loading-spinner 
+            :isLoading="!!loaderSettings.data.isLoading" :isFullPage="fullPageSpinner" />
+
+        <div class="loadingSkeleton">
+            <img v-if="!loaderSettings.data.isLoading && !!loaderSettings.data.isImageSrc"
+                :src="inputImageSrc ? inputImageSrc : '#'" 
+                :class="classList"
+                :width="loaderSettings.image.settings.width" 
+                :height="loaderSettings.image.settings.height" 
+                :alt="loaderSettings.image.imgAlt">
+        </div>
+
+        <div class="flex">
+            <label for="url"> {{ }} </label>
+            <input 
+                type="url" 
+                label="imageLink" 
+                v-model="loaderSettings.image.imgSrc">
+        
+            <button @click.prevent="loadImage">
+                load image
+            </button>
+        </div>
+
+        <p><strong v-text="texts.imgSrcDesc + loaderSettings.image.imgSrc" /></p>
+
+    </div>
+</template>
+
+<script>
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner.vue'
+
+export default {
+    name: 'ImageLoader',
+
+    components: {
+        LoadingSpinner
+    },
+
+    props: {
+        classList: {
+            type: String,
+            required: false,
+            default: ''
+        },
+
+        fullPageSpinner: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+    },
+
+    data() {
+        return {
+            loaderSettings: {
+                data: {
+                    isLoading: false,
+                    loadingUrl: '',
+                    isImageSrc: false
+                },
+
+                image: {
+                    skeletonSrc: '',
+                    skeletonAlt: '',
+                    imgSrc: '',
+                    imgAlt: '',
+                    settings: {
+                        width: '400',
+                        height: '250',
+                        timeout: 500,
+                    }
+                },
+
+                input: {
+                    type: 'text'
+                }
+            },
+
+            texts: {
+                imgSrcDesc: '',
+                warnings: {
+                    loadingData: 'something went wrong while loading the image. Here, the error: '
+                }
+            }           
+        }
+    },
+
+    computed: {
+        inputImageSrc () {
+            return this.loaderSettings.data.loadingUrl
+        }
+    },
+
+    methods: {
+        loadImage () {
+            this.loaderSettings.data.isLoading = true
+
+            try {
+                fetch(this.loaderSettings.image.imgSrc)
+                    .then(data => console.log(data))
+                console.log('try works')
+            } 
+            catch (error) {
+                console.warn(this.loaderSettings.warnings.loadingData + JSON.stringify(error))
+                // Do not show image on error
+                return false
+            }
+            finally {
+                this.loaderSettings.data.loadingUrl = this.loaderSettings.image.imgSrc
+                console.log('finally works')
+
+                this.loaderSettings.data.isImageSrc = true
+
+                window.setTimeout(() => {
+                    this.loaderSettings.data.isLoading = false
+                }, this.loaderSettings.image.settings.timeout)
+            }
+        }
+    },
+
+    mounted () {
+        console.log(this.loaderSettings.data.isImageSrc)
+    }
+}
+</script>
