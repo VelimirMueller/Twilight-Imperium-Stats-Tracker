@@ -3,13 +3,17 @@
         width: 100%;
     }
 
+    &-50 {
+        width: 50%;
+    }
+
     &-v {
         &-100 {
             width: 100vw;
         }
     }
 
-    &-fixed {
+    &-h-fixed {
         &-s {
             width: 400px;
             height: 400px;;

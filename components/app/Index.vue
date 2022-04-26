@@ -3,7 +3,10 @@
        <h2 class="m-0">Vue component name: {{ cleanHeadline }}</h2>
    </div>
 
-   <image-loader></image-loader>
+   <image-loader 
+        wrapperStyles="w-100" 
+        imageStyles="w-50 h-50" 
+        spinnerStyles="w-100 flex flex-align-items-center flex-content-justify-center absolute bg-white" />
 </template>
 
 <script>

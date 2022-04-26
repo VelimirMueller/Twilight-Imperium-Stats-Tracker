@@ -36,12 +36,6 @@ export default {
             type: Boolean,
             required: true,
             default: false
-        },
-
-        isFullPage: {
-            type: Boolean,
-            required: false,
-            default: false
         }
     },
 

@@ -1,159 +1,40 @@
 <template>
-    <div class="font-family-kanit">
-        <loading-spinner 
-            :isLoading="!!loaderSettings.data.isLoading" />
-
-        <img v-if="!loaderSettings.data.isLoading && !!loaderSettings.data.isImageSrc"
-            :src="inputImageSrc ? inputImageSrc : '#'" 
-            :class="classList"
-            :width="loaderSettings.image.settings.width" 
-            :height="loaderSettings.image.settings.height" 
-            :alt="loaderSettings.image.imgAlt">
-
-        <div class="flex">
-            <label for="url"> {{ }} </label>
-            <input 
-                type="url" 
-                label="imageLink" 
-                v-model="loaderSettings.image.imgSrc">
-        
-            <button @click.prevent="loadImage">
-                load image
-            </button>
-        </div>
-
-        <p v-text="texts.imgSrcDesc + loaderSettings.image.imgSrc" />
-
-    </div>
-</template>
-
-<script>
-import LoadingSpinner from '../loadingSpinner/LoadingSpinner.vue'
-
-export default {
-    name: 'ImageLoader',
-
-    components: {
-        LoadingSpinner
-    },
-
-    props: {
-        classList: {
-            type: String,
-            required: false,
-            default: ''
-        },
-
-        fullPageSpinner: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-
-    data() {
-        return {
-            loaderSettings: {
-                data: {
-                    isLoading: false,
-                    loadingUrl: '',
-                    isImageSrc: false
-                },
-
-                image: {
-                    skeletonSrc: '',
-                    skeletonAlt: '',
-                    imgSrc: '',
-                    imgAlt: '',
-                    settings: {
-                        width: '400',
-                        height: '250',
-                        timeout: 500,
-                    }
-                },
-
-                input: {
-                    type: 'text'
-                }
-            },
-
-            texts: {
-                imgSrcDesc: '',
-                warnings: {
-                    loadingData: 'something went wrong while loading the image. Here, the error: '
-                }
-            }           
-        }
-    },
-
-    computed: {
-        inputImageSrc () {
-            return this.loaderSettings.data.loadingUrl
-        }
-    },
-
-    methods: {
-        loadImage () {
-            this.loaderSettings.data.isLoading = true
-
-            try {
-                fetch(this.loaderSettings.image.imgSrc)
-                    .then(data => console.log(data))
-                console.log('try works')
-            } 
-            catch (error) {
-                console.warn(this.loaderSettings.warnings.loadingData + JSON.stringify(error))
-                // Do not show image on error
-                return false
-            }
-            finally {
-                this.loaderSettings.data.loadingUrl = this.loaderSettings.image.imgSrc
-                console.log('finally works')
-
-                this.loaderSettings.data.isImageSrc = true
-
-                window.setTimeout(() => {
-                    this.loaderSettings.data.isLoading = false
-                }, this.loaderSettings.image.settings.timeout)
-            }
-        }
-    },
-
-    mounted () {
-        console.log(this.loaderSettings.data.isImageSrc)
-    }
-}
-</script>
-
-
-<template>
-    <div class="loadingWrapper font-family-kanit">
-        <loading-spinner 
-            :isLoading="!!loaderSettings.data.isLoading" :isFullPage="fullPageSpinner" />
-
-        <div class="loadingSkeleton">
-            <img v-if="!loaderSettings.data.isLoading && !!loaderSettings.data.isImageSrc"
+    <div class="loadingWrapper">
+        <div :class="wrapperStyles">
+            <img 
+                v-if="
+                    !!loaderSettings.data.isImageSrc 
+                    && !loaderSettings.data.isLoading 
+                    && !loaderSettings.errorpage.show
+                "
                 :src="inputImageSrc ? inputImageSrc : '#'" 
-                :class="classList"
+                :class="imageStyles"
                 :width="loaderSettings.image.settings.width" 
                 :height="loaderSettings.image.settings.height" 
-                :alt="loaderSettings.image.imgAlt">
+                :alt="renderImageAltText">
+                
+            <div v-if="loaderSettings.errorpage.show" class="w-100 h-100 bg-darkest flex">
+                <h2 class="flex-align-items font-color-white text-center">ERROR LOADING PICTURE</h2>
+            </div>
         </div>
 
         <div class="flex">
             <label for="url"> {{ }} </label>
-            <input 
+            <input
+                class="flex-content-justify-end"
                 type="url" 
                 label="imageLink" 
                 v-model="loaderSettings.image.imgSrc">
-        
-            <button @click.prevent="loadImage">
+            <button class="btn-primary-dark flex-content-justify-end" @click.prevent="loadImage">
                 load image
             </button>
         </div>
-
-        <p><strong v-text="texts.imgSrcDesc + loaderSettings.image.imgSrc" /></p>
-
+        <p v-if="!loaderSettings.errorpage.show" 
+            v-text="'URL: ' + texts.imgSrcDesc + loaderSettings.image.imgSrc" />
+        
+        <loading-spinner
+                :isLoading="loaderSettings.data.isLoading" 
+                :class="spinnerStyles" />
     </div>
 </template>
 
@@ -168,17 +49,22 @@ export default {
     },
 
     props: {
-        classList: {
+        imageStyles: {
             type: String,
             required: false,
-            default: ''
         },
 
-        fullPageSpinner: {
-            type: Boolean,
-            required: false,
-            default: false,
+        wrapperStyles: {
+            type: String,
+            required: false
         },
+
+        spinnerStyles: {
+            type: String,
+            required: true,
+            default: ''
+        }
+
     },
 
     data() {
@@ -187,30 +73,34 @@ export default {
                 data: {
                     isLoading: false,
                     loadingUrl: '',
-                    isImageSrc: false
+                    isImageSrc: false,
+                    isResponseOk: false
                 },
 
                 image: {
                     skeletonSrc: '',
                     skeletonAlt: '',
                     imgSrc: '',
-                    imgAlt: '',
+                    imgAlt: 'Your uploaded image alt text is here!',
                     settings: {
-                        width: '400',
-                        height: '250',
+                        width: '',
+                        height: '',
                         timeout: 500,
                     }
                 },
 
                 input: {
                     type: 'text'
+                },
+                errorpage: {
+                    show: false
                 }
             },
 
             texts: {
                 imgSrcDesc: '',
                 warnings: {
-                    loadingData: 'something went wrong while loading the image. Here, the error: '
+                    loadingData: 'something went wrong while loadnig the image. Here, the error: '
                 }
             }           
         }
@@ -219,7 +109,11 @@ export default {
     computed: {
         inputImageSrc () {
             return this.loaderSettings.data.loadingUrl
-        }
+        },
+
+        renderImageAltText () {
+            return this.loaderSettings.errorpage.show ? 'enter url to load a image' : ''
+        },
     },
 
     methods: {
@@ -227,24 +121,41 @@ export default {
             this.loaderSettings.data.isLoading = true
 
             try {
-                fetch(this.loaderSettings.image.imgSrc)
-                    .then(data => console.log(data))
+                if (this.loaderSettings.image.imgSrc != '') {
+                    fetch(this.loaderSettings.image.imgSrc)
+                    .then(response => {
+                        if (response.ok) {
+                            this.loaderSettings.data.isResponseOk = true
+                            this.loaderSettings.data.isLoading = false
+                        } else {
+                           window.setTimeout(() => {
+                                this.loaderSettings.data.isLoading = false
+                                this.loaderSettings.errorpage.show = true
+                            }, this.loaderSettings.image.settings.timeout)
+                           return false
+                        }
+                    })
+                } else {
+                    window.setTimeout(() => {
+                                this.loaderSettings.data.isLoading = false
+                                this.loaderSettings.errorpage.show = true
+                            }, this.loaderSettings.image.settings.timeout)
+                    return false
+                }
                 console.log('try works')
-            } 
+            }
+
             catch (error) {
                 console.warn(this.loaderSettings.warnings.loadingData + JSON.stringify(error))
                 // Do not show image on error
                 return false
             }
+
             finally {
                 this.loaderSettings.data.loadingUrl = this.loaderSettings.image.imgSrc
                 console.log('finally works')
 
                 this.loaderSettings.data.isImageSrc = true
-
-                window.setTimeout(() => {
-                    this.loaderSettings.data.isLoading = false
-                }, this.loaderSettings.image.settings.timeout)
             }
         }
     },

@@ -81,3 +81,85 @@
     height: 3em;
     font-family: 'Kanit', sans-serif;
 }
+
+.hamburger {
+    transform: rotate(3deg);
+
+    & > .line{
+        width: 40px;
+        height: 5px;
+        background-color: $darkest;
+        border-radius: 10px;
+        display: block;
+        margin: 8px auto;
+        -webkit-transition: all 0.75s ease-in-out;
+        -o-transition: all 0.75s ease-in-out;
+        transition: all 0.75s ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: rotate(0deg);
+
+        & > .line {
+            background-color: $light;
+        }
+    }
+}
+
+#hamburger-wrapper{
+    position: relative;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+
+    &.is-active {
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+
+        &:before {
+            border: 5px solid $darkest;
+        }
+
+        & > .line {
+            width: 35px;
+            transform: rotate(3deg);
+
+            &:nth-child(1) {
+                -webkit-transform: translateY(13px);
+                -ms-transform: translateY(13px);
+                -o-transform: translateY(13px);
+                transform: translateY(13px);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                -webkit-transform: translateY(-13px) rotate(90deg);
+                -ms-transform: translateY(-13px) rotate(90deg);
+                -o-transform: translateY(-13px) rotate(90deg);
+                transform: translateY(-13px) rotate(90deg);
+            }
+        }
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 70px;
+        height: 70px;
+        border: 5px solid transparent;
+        top: calc(50% - 35px);
+        left: calc(50% - 35px);
+        border-radius: 100%;
+        -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+}
+  

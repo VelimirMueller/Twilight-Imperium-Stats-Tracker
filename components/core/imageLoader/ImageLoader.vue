@@ -1,32 +1,37 @@
 <template>
     <div class="loadingWrapper">
-        <div class="loadingSkeleton">
-            <loading-spinner
-                :isLoading="loaderSettings.data.isLoading" 
-                :isFullPage="true" 
-                :classList="'w-100 flex flex-align-items-center flex-content-justify-center absolute bg-white'" />
-                
+        <div :class="wrapperStyles">
             <img 
-                v-if="!!loaderSettings.data.isImageSrc && !loaderSettings.data.isLoading" 
+                v-if="
+                    !!loaderSettings.data.isImageSrc 
+                    && !loaderSettings.data.isLoading 
+                    && !loaderSettings.errorpage.show
+                "
                 :src="inputImageSrc ? inputImageSrc : '#'" 
-                :class="classList"
+                :class="imageStyles"
                 :width="loaderSettings.image.settings.width" 
                 :height="loaderSettings.image.settings.height" 
-                :alt="loaderSettings.image.imgAlt">
+                :alt="renderImageAltText">
+                
+            <div v-if="loaderSettings.errorpage.show && !loaderSettings.data.isLoading" class="w-100 h-100 bg-darkest flex">
+                <h2 class="flex-align-items font-color-white text-center">ERROR LOADING PICTURE</h2>
+            </div>
         </div>
 
         <div class="flex">
             <label for="url"> {{ }} </label>
             <input 
-                type="url" 
+                type="url"
                 label="imageLink" 
                 v-model="loaderSettings.image.imgSrc">
-            <button @click.prevent="loadImage">
+            <button class="btn-primary-darker" @click.prevent="loadImage">
                 load image
             </button>
         </div>
-        <p v-text="'URL: ' + texts.imgSrcDesc + loaderSettings.image.imgSrc.substring(0, 40) + loaderSettings.image.imgSrc.length > 40 ? '...' : ''" />
-
+        <p v-if="!loaderSettings.errorpage.show && !loaderSettings.data.isLoading" 
+            v-text="'URL: ' + texts.imgSrcDesc + loaderSettings.image.imgSrc" />
+        
+        <loading-spinner :isLoading="loaderSettings.data.isLoading" />
     </div>
 </template>
 
@@ -41,12 +46,15 @@ export default {
     },
 
     props: {
-        classList: {
+        imageStyles: {
             type: String,
             required: false,
-            default: ''
         },
 
+        wrapperStyles: {
+            type: String,
+            required: false
+        }
     },
 
     data() {
@@ -55,7 +63,8 @@ export default {
                 data: {
                     isLoading: false,
                     loadingUrl: '',
-                    isImageSrc: false
+                    isImageSrc: false,
+                    isResponseOk: false
                 },
 
                 image: {
@@ -64,14 +73,17 @@ export default {
                     imgSrc: '',
                     imgAlt: 'Your uploaded image alt text is here!',
                     settings: {
-                        width: '400',
-                        height: '250',
+                        width: '',
+                        height: '',
                         timeout: 500,
                     }
                 },
 
                 input: {
                     type: 'text'
+                },
+                errorpage: {
+                    show: false
                 }
             },
 
@@ -87,32 +99,55 @@ export default {
     computed: {
         inputImageSrc () {
             return this.loaderSettings.data.loadingUrl
+        },
+
+        renderImageAltText () {
+            return this.loaderSettings.errorpage.show ? 'enter url to load a image' : ''
         }
     },
 
     methods: {
         loadImage () {
+            this.loaderSettings.errorpage.show = false
             this.loaderSettings.data.isLoading = true
 
             try {
-                fetch(this.loaderSettings.image.imgSrc)
-                    .then(data => console.log(data))
+                if (this.loaderSettings.image.imgSrc != '') {
+                    fetch(this.loaderSettings.image.imgSrc)
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(response)
+                            this.loaderSettings.data.isResponseOk = true
+                            this.loaderSettings.data.isLoading = false
+                        } else {
+                            window.setTimeout(() => {
+                                this.loaderSettings.data.isLoading = false
+                                this.loaderSettings.errorpage.show = true
+                            }, this.loaderSettings.image.settings.timeout)
+                        }
+                    }).catch(() => {
+                        console.log("error")
+                        window.setTimeout(() => {
+                            this.loaderSettings.data.isLoading = false
+                            this.loaderSettings.errorpage.show = true
+                        }, this.loaderSettings.image.settings.timeout)
+                    });
+                } else {
+                     window.setTimeout(() => {
+                        this.loaderSettings.data.isLoading = false
+                        this.loaderSettings.errorpage.show = true
+                    }, this.loaderSettings.image.settings.timeout)
+                }
                 console.log('try works')
-            } 
+            }
             catch (error) {
                 console.warn(this.loaderSettings.warnings.loadingData + JSON.stringify(error))
-                // Do not show image on error
-                return false
             }
             finally {
                 this.loaderSettings.data.loadingUrl = this.loaderSettings.image.imgSrc
                 console.log('finally works')
 
                 this.loaderSettings.data.isImageSrc = true
-
-                window.setTimeout(() => {
-                    this.loaderSettings.data.isLoading = false
-                }, this.loaderSettings.image.settings.timeout)
             }
         }
     },

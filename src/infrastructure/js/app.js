@@ -18,7 +18,14 @@ import '../../../assets/client/styles/utility/_flexbox.scss';
 import '../../../assets/client/styles/utility/_width.scss';
 import '../../../assets/client/styles/utility/_height.scss';
 import '../../../assets/client/styles/utility/_dynamics.scss';
+import '../../../assets/client/styles/utility/_border.scss';
 
-//page layouts
-import '../../../assets/client/styles/components/_index.scss';
+//specific page layouts
+import '../../../assets/client/styles/components/app/_index.scss';
+
+//core layouts
+import '../../../assets/client/styles/components/core/_buttons.scss';
+import '../../../assets/client/styles/components/core/_spinner.scss';
+
+//page componentes
 import '../../../assets/client/styles/components/_nav.scss';
