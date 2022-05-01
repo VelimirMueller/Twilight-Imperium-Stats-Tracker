@@ -28,4 +28,11 @@
     &-lightest {
         background-color: $lightest;
     }
+
+    &-error {
+        background-color: $error;
+        border: 2px solid $darkest;
+        margin-bottom: 5px;
+        box-sizing: border-box;
+    }
 }

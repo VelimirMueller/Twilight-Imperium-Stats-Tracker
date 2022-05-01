@@ -1,0 +1,13 @@
+@import '../../color_palette.scss';
+
+.error {
+    background-color: $error;
+    color: $error-styles;
+    border: solid 1px $error-styles;
+}
+
+.warning {
+    background-color: $warning;
+    color: $warning-styles;
+    border: solid 1px $warning-styles;
+}

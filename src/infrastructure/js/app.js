@@ -26,6 +26,7 @@ import '../../../assets/client/styles/components/app/_index.scss';
 //core layouts
 import '../../../assets/client/styles/components/core/_buttons.scss';
 import '../../../assets/client/styles/components/core/_spinner.scss';
+import '../../../assets/client/styles/components/core/_error.scss';
 
 //page componentes
 import '../../../assets/client/styles/components/_nav.scss';

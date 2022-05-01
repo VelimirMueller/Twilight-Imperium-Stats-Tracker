@@ -1,5 +1,5 @@
 <template>
-    <div class="loadingWrapper">
+    <div class="w-100 h-100">
         <div :class="wrapperStyles">
             <img 
                 v-if="
@@ -13,14 +13,19 @@
                 :height="loaderSettings.image.settings.height" 
                 :alt="renderImageAltText">
                 
-            <div v-if="loaderSettings.errorpage.show && !loaderSettings.data.isLoading" class="w-100 h-100 bg-darkest flex">
-                <h2 class="flex-align-items font-color-white text-center">ERROR LOADING PICTURE</h2>
+            <div v-if="loaderSettings.errorpage.show && !loaderSettings.data.isLoading" :class="setErrorStyles">
+                <h2 
+                    class="flex-align-items font-position-center w-100"
+                    v-text="renderErrorHandlerText"></h2>
             </div>
+
+            <loading-spinner :isLoading="loaderSettings.data.isLoading" />
         </div>
 
         <div class="flex">
             <label for="url"> {{ }} </label>
             <input 
+                class="w-100"
                 type="url"
                 label="imageLink" 
                 v-model="loaderSettings.image.imgSrc">
@@ -28,10 +33,13 @@
                 load image
             </button>
         </div>
-        <p v-if="!loaderSettings.errorpage.show && !loaderSettings.data.isLoading" 
-            v-text="'URL: ' + texts.imgSrcDesc + loaderSettings.image.imgSrc" />
-        
-        <loading-spinner :isLoading="loaderSettings.data.isLoading" />
+        <p 
+            v-if="!loaderSettings.errorpage.show && !loaderSettings.data.isLoading" 
+            v-text="'Original Image URL: '" />
+        <a 
+             v-if="!loaderSettings.errorpage.show && !loaderSettings.data.isLoading" 
+            :href="loaderSettings.data.loadingUrl" 
+            v-text="renderLinkText" /> 
     </div>
 </template>
 
@@ -90,7 +98,15 @@ export default {
             texts: {
                 imgSrcDesc: '',
                 warnings: {
-                    loadingData: 'something went wrong while loadnig the image. Here, the error: '
+                    loadingData: 'something went wrong while loadnig the image. Here, the error: ',
+                    error: {
+                        isError: false,
+                        text: 'error while loading picture'
+                    },
+                    warning: {
+                        isWarning: false,
+                        text: 'please enter an url to load an image'
+                    }
                 }
             }           
         }
@@ -103,6 +119,31 @@ export default {
 
         renderImageAltText () {
             return this.loaderSettings.errorpage.show ? 'enter url to load a image' : ''
+        },
+
+        renderLinkText () {
+            return this.loaderSettings.data.loadingUrl.substr(0,33)
+        },
+
+        renderErrorHandlerText () {
+            if (!!this.texts.warnings.error.isError) {
+                return this.texts.warnings.error.text
+            }
+            if (!!this.texts.warnings.warning.isWarning) {
+                return this.texts.warnings.warning.text
+            }
+
+            return false
+        },
+
+        setErrorStyles () {
+            if (!!this.texts.warnings.error.isError) {
+                return 'w-100 h-100 error flex'
+            }
+            if (!!this.texts.warnings.warning.isWarning) {
+                return 'w-100 h-100 warning flex'
+            }
+            return 'w-100 h-100 flex'
         }
     },
 
@@ -110,6 +151,7 @@ export default {
         loadImage () {
             this.loaderSettings.errorpage.show = false
             this.loaderSettings.data.isLoading = true
+            this.resetErrorState()
 
             try {
                 if (this.loaderSettings.image.imgSrc != '') {
@@ -123,6 +165,7 @@ export default {
                             window.setTimeout(() => {
                                 this.loaderSettings.data.isLoading = false
                                 this.loaderSettings.errorpage.show = true
+                                this.texts.warnings.error.isError = true
                             }, this.loaderSettings.image.settings.timeout)
                         }
                     }).catch(() => {
@@ -130,12 +173,14 @@ export default {
                         window.setTimeout(() => {
                             this.loaderSettings.data.isLoading = false
                             this.loaderSettings.errorpage.show = true
+                            this.texts.warnings.error.isError = true
                         }, this.loaderSettings.image.settings.timeout)
                     });
                 } else {
                      window.setTimeout(() => {
                         this.loaderSettings.data.isLoading = false
                         this.loaderSettings.errorpage.show = true
+                        this.texts.warnings.warning.isWarning = true
                     }, this.loaderSettings.image.settings.timeout)
                 }
                 console.log('try works')
@@ -149,6 +194,11 @@ export default {
 
                 this.loaderSettings.data.isImageSrc = true
             }
+        },
+
+        resetErrorState () {
+            this.texts.warnings.error.isError = false
+            this.texts.warnings.warning.isWarning = false
         }
     },
 
