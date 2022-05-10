@@ -13,6 +13,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    /**
+     *  @ORM\Column(type="string", unique=true, nullable=true)
+     */
+    private $apiToken;
+        
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
