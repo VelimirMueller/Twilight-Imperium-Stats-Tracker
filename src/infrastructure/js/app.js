@@ -27,6 +27,10 @@ import '../../../assets/client/styles/components/app/_index.scss';
 import '../../../assets/client/styles/components/core/_buttons.scss';
 import '../../../assets/client/styles/components/core/_spinner.scss';
 import '../../../assets/client/styles/components/core/_error.scss';
+import '../../../assets/client/styles/components/core/_progress.scss';
 
 //page componentes
 import '../../../assets/client/styles/components/_nav.scss';
+
+//tailwind
+import '../../../assets/client/styles/tailwind/tailwind.css'

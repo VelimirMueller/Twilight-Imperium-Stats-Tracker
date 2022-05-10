@@ -2,6 +2,14 @@
 
 .font {
     &-size {
+        &-2xl{
+            font-size: 5rem;
+        }
+
+        &-xl{
+            font-size: 4rem;
+        }
+
         &-l{
             font-size: 3rem;
         }

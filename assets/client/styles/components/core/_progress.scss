@@ -1,0 +1,12 @@
+@import '../../color_palette.scss';
+
+#progress {
+    width: 100%;
+    background-color: $success;
+  }
+  
+#bar {
+    width: 1%;
+    height: 30px;
+    background-color: $success-styles;
+  }

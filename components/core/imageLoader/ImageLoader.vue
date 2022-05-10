@@ -29,7 +29,7 @@
                 type="url"
                 label="imageLink" 
                 v-model="loaderSettings.image.imgSrc">
-            <button class="btn-primary-darker" @click.prevent="loadImage">
+            <button id="progressStart" class="btn-primary-darker" @click.prevent="loadImage">
                 load image
             </button>
         </div>

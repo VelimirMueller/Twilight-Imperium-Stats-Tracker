@@ -22,19 +22,4 @@ class AppController extends AbstractController
             'pageVars' => $pageVars
         ]);
     }
-
-    /**
-     * @Route("/register", name="app_register")
-     */
-    public function register(): Response
-    {
-        $pageVars = array(
-            "title" => "Registrieren",
-            "headline" => "| Registrierung |"
-        );
-
-        return $this->render('app/register.html.twig', [
-            'pageVars' => $pageVars,
-        ]);
-    }
 }

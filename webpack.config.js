@@ -25,7 +25,6 @@ Encore
      */
     .addEntry('app', './src/infrastructure/js/app.js')
     .addEntry('app_index', './src/infrastructure/js/entrypoints/app_index.js')
-    .addEntry('app_register', './src/infrastructure/js/entrypoints/app_register.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./src/infrastructure/js/controllers.json')
@@ -82,10 +81,17 @@ Encore
             path.join(__dirname, 'templates/**/*.html.twig'),
             path.join(__dirname, 'components/**/*.vue'),
         ]),
-        content: ["**/*.twig", "**/*.vue"],
+        content: ["**/*.html"],
         defaultExtractor: (content) => {
             return content.match(/[\w-/:]+(?<!:)/g) || [];
         }
     }))
+
+    .enablePostCssLoader((options) => {
+        options.postcssOptions = {
+            config: './postcss.config.js'
+        };
+    })
+    
     ;
 module.exports = Encore.getWebpackConfig();
