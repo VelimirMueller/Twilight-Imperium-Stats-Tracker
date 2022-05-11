@@ -48,11 +48,11 @@
   </div>
 </template>
 
-<script>
-import Login from './modals/LoginAndRegister.vue'
+        <script>
+        import Login from './modals/LoginAndRegister.vue'
 
-export default {
-  name: 'HeroMain',
+        export default {
+          name: 'HeroMain',
 
   components: {
     Login
