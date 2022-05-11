@@ -1,0 +1,43 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended",
+    "plugin:vue/vue3-strongly-recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module",
+    "vueCompilerOptions": false
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "vue/html-indent": [
+      "error",
+      2
+    ],
+    "eqeqeq": "off",
+    "curly": "error",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ],
+    "array-bracket-newline": [
+      "error",
+      {
+        "minItems": 1
+      }
+    ],
+    "newline-before-return": "error",
+    "object-curly-spacing": ["error", "always", { "objectsInObjects": false }]
+  }
+}
