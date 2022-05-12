@@ -14,16 +14,13 @@
         <div 
           v-for="item in stats.globalStats" 
           :key="item.name" 
-          class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 hover:bg-gray-900 hover:text-indigo-200 transition-full duration-500 ease-in-out"
-        >
+          class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 hover:bg-gray-900 hover:text-indigo-200 transition-full duration-500 ease-in-out">
           <dt 
             class="text-sm font-medium truncate text-center"
-            v-text="item.name"
-          />
+            v-text="item.name" />
           <dd 
             class="mt-1 text-3xl font-semibold text-center"
-            v-text="item.stat"
-          />
+            v-text="item.stat" />
         </div>
       </dl>
 
@@ -31,17 +28,14 @@
         <div 
           v-for="item in stats.fractionStats" 
           :key="item.name" 
-          class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 hover:bg-gray-900 hover:text-indigo-200 transition-full duration-500 ease-in-out"
-        >
+          class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 hover:bg-gray-900 hover:text-indigo-200 transition-full duration-500 ease-in-out">
           <dt 
             class="text-sm font-medium truncate text-center"
-            v-text="item.name"
-          />
+            v-text="item.name" />
 
           <dd
             class="mt-1 text-3xl font-semibold text-center"
-            v-text="item.stat"
-          />
+            v-text="item.stat" />
         </div>
       </dl>
     </div>

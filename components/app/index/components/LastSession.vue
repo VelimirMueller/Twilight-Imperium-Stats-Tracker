@@ -5,8 +5,7 @@
     </p>
     <h1 
       class="text-center text-4xl text-gray-200 font-bold tracking-tight sm:text-5xl lg:text-6xl"
-      v-text="'Lerne aus vorherigen Spielen'"
-    />
+      v-text="'Lerne aus vorherigen Spielen'" />
     <div class="flex justify-center flex-wrap my-4">
       <!-- Card -->
       <div class="bg-white rounded-md h-72 w-4/5 lg:w-2/6 mb-4 mr-0 lg:m-6 md:mx-12 mb-8 mb-2 lg:mr-0 lg:mb-8">
@@ -15,8 +14,7 @@
           <img 
             class="w-full h-full"
             src="/img/the-emirates-of-hacan.png" 
-            alt="hacan faction picture"
-          >
+            alt="hacan faction picture">
         </div>
 
         <div class="flex h-2/3">
@@ -30,35 +28,29 @@
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
             </div>
             <div class="flex -space-x-1 overflow-hidden justify-center">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
             </div>
             <p class="text-gray-900">
               Zweiter Platz:
@@ -76,8 +68,7 @@
               <img
                 class="h-24 w-24 rounded-md"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <span class="absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 block border-2 border-white rounded-full">
                 <span class="block h-4 w-4 rounded-full bg-gray-300" />
               </span>
@@ -97,8 +88,7 @@
           <img 
             class="w-full h-full"
             src="/img/the-mahact-gene-sorcerers.png" 
-            alt="hacan faction picture"
-          >
+            alt="hacan faction picture">
         </div>
 
         <div class="flex h-2/3">
@@ -112,35 +102,29 @@
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
             </div>
             <div class="flex -space-x-1 overflow-hidden justify-center">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
             </div>
             <p class="text-gray-900">
               Zweiter Platz:
@@ -158,8 +142,7 @@
               <img
                 class="h-24 w-24 rounded-md"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              >
+                alt="">
               <span class="absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 block border-2 border-white rounded-full">
                 <span class="block h-4 w-4 rounded-full bg-gray-300" />
               </span>

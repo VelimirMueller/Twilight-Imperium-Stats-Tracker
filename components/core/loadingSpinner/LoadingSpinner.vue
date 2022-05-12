@@ -1,49 +1,46 @@
 <template>
+  <div 
+    v-if="!!loadingData" 
+    id="spinner">
     <div 
-        id="spinner" 
-        v-if="!!loadingData">
-
-        <div 
-            id="spinner-element" 
-            :class="classList">
-            
-            <div class="spinner">
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-            </div>
-        </div>
+      id="spinner-element" 
+      :class="classList">
+      <div class="spinner">
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'LoadingSpinnger',
+  name: 'LoadingSpinnger',
 
-    props: {
-        classList: {
-            type: String,
-            required: false,
-            default: ""
-        },
-
-        isLoading: {
-            type: Boolean,
-            required: true,
-            default: false
-        }
+  props: {
+    classList: {
+      type: String,
+      required: false,
+      default: ''
     },
 
-    computed: {
-        loadingData () {
-            return this.isLoading
-        },
+    isLoading: {
+      type: Boolean,
+      required: true,
+      default: false
     }
+  },
+
+  computed: {
+    loadingData () {
+      return this.isLoading
+    },
+  }
 }
 </script>
-
