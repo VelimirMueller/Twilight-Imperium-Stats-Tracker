@@ -108,7 +108,6 @@ export default {
           password: this.input.password
         })
       })
-        .then(response => console.log(response))
       this.resetForm()
     },
 

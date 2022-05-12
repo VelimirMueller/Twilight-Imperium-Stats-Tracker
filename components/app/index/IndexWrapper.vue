@@ -1,28 +1,28 @@
 <template>
   <div class="component-container">
-    <nav-bar />
+    <simple-navbar />
     <hero-main />
     <stats-area :stats="stats" />
     <last-session />
-    <foot-bar />
+    <simple-footer />
   </div>
 </template>
 
 <script>
-import FootBar from '../../core/footbar/FootBar.vue'
+import SimpleFooter from '../../core/footbar/SimpleFooter.vue'
 import HeroMain from './components/HeroMain.vue'
 import LastSession from './components/LastSession.vue'
-import NavBar from '../../core/navbar/NavBar.vue'
+import SimpleNavbar from '../../core/navbar/SimpleNavbar.vue'
 import StatsArea from './components/StatsArea.vue'
 
 export default {
   name: 'IndexWrapper',
 
   components: {
-    FootBar,
+    SimpleFooter,
     HeroMain,
     LastSession,
-    NavBar,
+    SimpleNavbar,
     StatsArea
   },
 

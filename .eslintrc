@@ -87,6 +87,34 @@
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
       "multiline": "never"
-    }]
+    }
+  ],
+  "vue/component-definition-name-casing": [
+    "error",
+    "PascalCase"
+  ],
+  "vue/no-duplicate-attributes": [
+    "error",
+    {
+      "allowCoexistClass": false,
+      "allowCoexistStyle": false
+    }
+  ],
+  "vue/max-attributes-per-line": [
+    "error",
+    {
+      "singleline": {
+        "max": 1
+      },
+      "multiline": {
+        "max": 1
+      }
+    }
+  ],
+  "vue/html-comment-indent": [
+    "error",
+    2
+  ],
+  "no-console": "error"
   }
 }

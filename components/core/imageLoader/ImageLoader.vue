@@ -12,7 +12,6 @@
         :width="loaderSettings.image.settings.width" 
         :height="loaderSettings.image.settings.height" 
         :alt="renderImageAltText">
-                
       <div
         v-if="loaderSettings.errorpage.show && !loaderSettings.data.isLoading"
         :class="setErrorStyles">
@@ -34,9 +33,8 @@
       <button
         id="progressStart"
         class="btn-primary-darker"
-        @click.prevent="loadImage">
-        load image
-      </button>
+        @click.prevent="loadImage"
+        v-text="'load image'" />
     </div>
     <p 
       v-if="!loaderSettings.errorpage.show && !loaderSettings.data.isLoading" 
@@ -62,11 +60,13 @@ export default {
     imageStyles: {
       type: String,
       required: false,
+      default: ''
     },
 
     wrapperStyles: {
       type: String,
-      required: false
+      required: false,
+      default: ''
     }
   },
 
@@ -97,7 +97,8 @@ export default {
         },
         errorpage: {
           show: false
-        }
+        },
+        lastError: ''
       },
 
       texts: {
@@ -164,52 +165,52 @@ export default {
           fetch(this.loaderSettings.image.imgSrc)
             .then(response => {
               if (response.ok) {
-                console.log(response)
                 this.loaderSettings.data.isResponseOk = true
                 this.loaderSettings.data.isLoading = false
               } else {
                 window.setTimeout(() => {
-                  this.loaderSettings.data.isLoading = false
-                  this.loaderSettings.errorpage.show = true
-                  this.texts.warnings.error.isError = true
+                  this.renderErrorPage()
                 }, this.loaderSettings.image.settings.timeout)
               }
-            }).catch(() => {
-              console.log('error')
+            }).catch((error) => {
               window.setTimeout(() => {
-                this.loaderSettings.data.isLoading = false
-                this.loaderSettings.errorpage.show = true
-                this.texts.warnings.error.isError = true
+                this.renderErrorPage()
+                this.lastError = error
               }, this.loaderSettings.image.settings.timeout)
             });
         } else {
           window.setTimeout(() => {
-            this.loaderSettings.data.isLoading = false
-            this.loaderSettings.errorpage.show = true
-            this.texts.warnings.warning.isWarning = true
+            this.renderErrorPage(false, true)
           }, this.loaderSettings.image.settings.timeout)
         }
-        console.log('try works')
-      }
-      catch (error) {
-        console.warn(this.loaderSettings.warnings.loadingData + JSON.stringify(error))
       }
       finally {
         this.loaderSettings.data.loadingUrl = this.loaderSettings.image.imgSrc
-        console.log('finally works')
 
         this.loaderSettings.data.isImageSrc = true
       }
+    },
+
+    /**
+     * Renders either an error or a warning component. By default an error component will be rendered
+     * if the loading of an image could not succeed or a warning component if no URL has been entered by the user.
+     * #### renderErrorPage() - render error component
+     * #### renderErrorPage(false, true) - render warning component
+     * 
+     * @param { Boolean } error
+     * @param { Boolean } warning 
+     */
+    renderErrorPage (error = true, warning = false) {
+      this.loaderSettings.data.isLoading = false
+      this.loaderSettings.errorpage.show = true
+      this.texts.warnings.error.isError = error
+      this.texts.warnings.error.isWarning = warning
     },
 
     resetErrorState () {
       this.texts.warnings.error.isError = false
       this.texts.warnings.warning.isWarning = false
     }
-  },
-
-  mounted () {
-    console.log(this.loaderSettings.data.isImageSrc)
   }
 }
 </script>
