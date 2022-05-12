@@ -49,10 +49,10 @@
 </template>
 
         <script>
-        import Login from './modals/LoginAndRegister.vue'
+import Login from './modals/LoginAndRegister.vue'
 
-        export default {
-          name: 'HeroMain',
+export default {
+  name: 'HeroMain',
 
   components: {
     Login
@@ -65,11 +65,12 @@
           headline: 'Twilight Imperium',
           subHeadline: 'Stats Tracker',
           paragraph: 'Finde heraus mit welchen Fraktionen du am besten bist, welche Spieler am gefährlichsten sind und schmiede geheime Bündnisse'
-          },
+        },
         button: {
           login: 'Login',
           register: 'Registrieren'
         }
+        
       },
       isModal: false
     }
@@ -78,7 +79,7 @@
   methods: {
     openModal () {
       document.getElementById('modal').classList.remove('hidden')
-        this.isModal = true
+      this.isModal = true
     },
 
     closeModal () {

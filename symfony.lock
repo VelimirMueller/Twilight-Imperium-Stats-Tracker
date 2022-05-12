@@ -340,7 +340,7 @@
             "./assets/styles/app.css",
             "./config/packages/webpack_encore.yaml",
             "./package.json",
-            "./webpack.config.js"
+            "src/infrastructure/js/webpack/webpack.config.js"
         ]
     },
     "symfony/yaml": {

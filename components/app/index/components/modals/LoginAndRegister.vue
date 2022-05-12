@@ -32,11 +32,11 @@
             v-text="'Email'"
           />
           <input
-            id="email" 
-            v-model="input.email"
+            id="email"
+            v-model="input.email" 
             class="w-full rounded-full h-12 bg-indigo-50 text-gray-900 border-gray-900"
-            name="email" 
-            type="text"
+            name="email"
+            type="text" 
           >
         </span>
         <span class="flex items-center h-12 justify-end my-4">
@@ -78,7 +78,7 @@ export default {
     return {
       input: {
         email: '',
-         password: ''
+        password: ''
       }
     }
   },

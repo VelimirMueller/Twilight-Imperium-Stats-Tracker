@@ -38,14 +38,33 @@ export default {
     return {
       stats: {
         globalStats: [
-          { name: 'Gespielte Sessions', stat: '0' },
-          { name: 'Ø Punktzahl', stat: '7.2' },
-          { name: 'Längste Siegsträhne', stat: '2' }
+          {
+            name: 'Gespielte Sessions', 
+            stat: '0' 
+          },
+          {
+            name: 'Ø Punktzahl', 
+            stat: '7.2' 
+          },
+          {
+            name: 'Längste Siegsträhne', 
+            stat: '2' 
+          }
         ],
+        
         fractionStats: [
-          { name: 'Meistgespielteste Fraktion', stat: 'Silberschwingen' },
-          { name: 'Weltraumtyrann', stat: 'Flo' },
-          { name: 'Am meisten Ehre', stat: 'Vele' }
+          {
+            name: 'Meistgespielteste Fraktion', 
+            stat: 'Silberschwingen' 
+          },
+          {
+            name: 'Weltraumtyrann', 
+            stat: 'Flo' 
+          },
+          {
+            name: 'Am meisten Ehre', 
+            stat: 'Vele' 
+          }
         ]
       }
     }

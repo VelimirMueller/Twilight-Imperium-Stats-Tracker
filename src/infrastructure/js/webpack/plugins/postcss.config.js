@@ -1,7 +1,9 @@
+/*eslint no-undef: 0*/
+
 let tailwindcss = require('tailwindcss');
 module.exports = {
   plugins: [
-    tailwindcss('./tailwind.config.js'),
+    tailwindcss('src/infrastructure/js/webpack/plugins/tailwind.config.js'),
     require('postcss-import'),
     require('autoprefixer')
   ],

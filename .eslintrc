@@ -1,13 +1,13 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:vue/recommended",
+    "plugin:vue/vue3-recommended",
     "plugin:vue/vue3-strongly-recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 9,
     "sourceType": "module",
-    "vueCompilerOptions": false
+    "vueCompilerOptions": true
   },
   "env": {
     "es6": true,
@@ -38,6 +38,15 @@
       }
     ],
     "newline-before-return": "error",
-    "object-curly-spacing": ["error", "always", { "objectsInObjects": false }]
+    "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
+    "vue/require-prop-types": "error",
+    "vue/attributes-order": "error",
+    "vue/order-in-components": "error",
+    "vue/this-in-template": "error",
+    "vue/script-indent": ["error", 2, { "baseIndent": 0 }],
+    "template-curly-spacing": ["error", "always"],
+    "object-curly-newline": ["error", "always"],
+    "comma-style": ["error", "last"],
+    "comma-spacing": ["error", { "before": false, "after": true }]
   }
 }
