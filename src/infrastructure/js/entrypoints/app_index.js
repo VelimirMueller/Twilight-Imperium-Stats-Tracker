@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import Index from '../../../../components/app/index/IndexWrapper.vue'
+import IndexWrapper from '../../../../components/app/index/IndexWrapper.vue'
 
-createApp({}).component('index', Index).mount('#app')
+createApp({}).component('IndexWrapper', IndexWrapper).mount('#app')
 
