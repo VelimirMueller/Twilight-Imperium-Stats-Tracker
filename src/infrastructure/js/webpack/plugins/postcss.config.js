@@ -6,5 +6,5 @@ module.exports = {
     tailwindcss('src/infrastructure/js/webpack/plugins/tailwind.config.js'),
     require('postcss-import'),
     require('autoprefixer')
-  ],
+  ]
 }

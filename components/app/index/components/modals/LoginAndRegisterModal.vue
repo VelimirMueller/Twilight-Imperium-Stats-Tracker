@@ -5,7 +5,7 @@
     <div class="text-white md:w-1/2 md:h-1/2 w-11/12 h-4/5 border z-0 flex justify-center items-center bg-white fixed">
       <form class="flex flex-col justify-center w-4/5">
         <div
-          class="cursor-pointer fixed top-0 right-0 w-12 h-12 rounded-full bg-gray-700 mr-4 mt-4 flex justify-center items-center"
+          class="cursor-pointer fixed top-0 right-0 w-12 h-12 rounded-full bg-red-700 mr-4 mt-4 flex justify-center items-center"
           @click="closeModal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,6 +59,10 @@
 </template>
 
 <script>
+/* eslint-disable object-curly-newline */
+import { appApi } from '../../../../../src/Helpers/js/api/apiHelper'
+/* eslint-enable object-curly-newline */
+
 export default {
   name: 'LoginAndRegisterModal',
 
@@ -95,18 +99,11 @@ export default {
     },
 
     login () {
-      fetch('/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        
-        body: JSON.stringify({
-          email: this.input.email,
-          password: this.input.password
-        })
-      })
+      const requestBody = {
+        email: this.input.email,
+        password: this.input.password
+      }
+      appApi('POST', '/', requestBody)
       this.resetForm()
     },
 
