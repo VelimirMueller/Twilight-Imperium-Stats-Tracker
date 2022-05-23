@@ -160,6 +160,6 @@
 
 <script>
 export default {
-  name: 'LastGame'
+  name: 'LastGames'
 }
 </script>

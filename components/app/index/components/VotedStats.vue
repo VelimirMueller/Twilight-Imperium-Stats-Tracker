@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: 'StatsArea',
+  name: 'VotedStats',
 
   props: {
     stats: {
@@ -56,7 +56,7 @@ export default {
 
   data () {
     return {
-      isLoading: false,
+      isLoading: false
     }
   }
 }

@@ -7,7 +7,7 @@
       alt="">
     <p
       class="mr-2"
-      v-text="userName" />
+      :v-text="userName ? userName : ''" />
     <span class="inline-block rounded-full overflow-hidden bg-gray-100 mr-4">
       <svg
         v-if="!isUserLoggedIn" 

@@ -5,7 +5,9 @@
     <div 
       id="spinner-element" 
       :class="classList">
-      <div class="spinner">
+      <div 
+        class="spinner" 
+        subString="123">
         <div />
         <div />
         <div />
@@ -40,7 +42,7 @@ export default {
   computed: {
     loadingData () {
       return this.isLoading
-    },
+    }
   }
 }
 </script>

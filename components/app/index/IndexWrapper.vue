@@ -1,29 +1,29 @@
 <template>
   <div class="component-container">
     <simple-navbar />
-    <hero-main />
-    <stats-area :stats="stats" />
-    <last-session />
+    <hero-large />
+    <voted-stats :stats="stats" />
+    <last-games />
     <simple-footer />
   </div>
 </template>
 
 <script>
 import SimpleFooter from '../../core/footbar/SimpleFooter.vue'
-import HeroMain from './components/HeroMain.vue'
-import LastSession from './components/LastSession.vue'
+import HeroLarge from './components/HeroLarge.vue'
+import LastGames from './components/LastGames.vue'
 import SimpleNavbar from '../../core/navbar/SimpleNavbar.vue'
-import StatsArea from './components/StatsArea.vue'
+import VotedStats from './components/VotedStats.vue'
 
 export default {
   name: 'IndexWrapper',
 
   components: {
     SimpleFooter,
-    HeroMain,
-    LastSession,
+    HeroLarge,
+    LastGames,
     SimpleNavbar,
-    StatsArea
+    VotedStats
   },
 
   props: {
@@ -74,6 +74,6 @@ export default {
     cleanHeadline () {
       return this.pageVars.headline.replace('| ', '').replace('', '| ')
     }
-  },
+  }
 }
 </script>

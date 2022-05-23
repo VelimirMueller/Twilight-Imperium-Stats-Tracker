@@ -115,6 +115,18 @@
     "error",
     2
   ],
-  "no-console": "error"
+  "no-console": "error",
+  "sort-vars": "error",
+  "comma-dangle": [
+    "error",
+    {
+      "arrays": "never",
+      "objects": "never",
+      "imports": "never",
+      "exports": "never",
+      "functions": "never"
+    }
+  ],
+  "vue/no-unused-properties": "error"
   }
 }

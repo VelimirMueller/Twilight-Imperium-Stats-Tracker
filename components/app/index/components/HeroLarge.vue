@@ -38,18 +38,17 @@
         </div>
       </div>
     </div>
-    <login :hidden="toggleModal" />
+    <login-and-register-modal :hidden="!isModal" />
   </div>
 </template>
-
-        <script>
-import Login from './modals/LoginAndRegister.vue'
+<script>
+import LoginAndRegisterModal from './modals/LoginAndRegisterModal.vue'
 
 export default {
-  name: 'HeroMain',
+  name: 'HeroLarge',
 
   components: {
-    Login
+    LoginAndRegisterModal
   },
 
   data () {
@@ -77,8 +76,9 @@ export default {
     },
 
     closeModal () {
+      document.getElementById('modal').classList.add('hidden')
       this.isModal = false
     }
-  },
+  }
 }
 </script>

@@ -80,6 +80,10 @@ export default {
           isResponseOk: false
         },
 
+        errorpage: {
+          show: false
+        },
+
         image: {
           skeletonSrc: '',
           skeletonAlt: '',
@@ -88,15 +92,12 @@ export default {
           settings: {
             width: '',
             height: '',
-            timeout: 500,
+            timeout: 500
           }
         },
 
         input: {
           type: 'text'
-        },
-        errorpage: {
-          show: false
         },
         lastError: ''
       },
