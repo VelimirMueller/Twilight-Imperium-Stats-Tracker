@@ -74,6 +74,10 @@ export default {
     }
   },
 
+  emits: [
+    'close-modal'
+  ],
+
   data () {
     return {
       input: {
@@ -116,6 +120,9 @@ export default {
   mounted () {
     document.getElementById('email').addEventListener('click', this.animateMail)
     document.getElementById('password').addEventListener('click', this.animatePw)
+    this.$emit('close-modal', () => {
+      this.closeModal()
+    })
   }
 }
 </script>

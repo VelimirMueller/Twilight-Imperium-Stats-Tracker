@@ -2,11 +2,12 @@
  * 
  * @param {String} method - possible methods: GET, POST
  * @param {String} route - the API endpoint
- * @param {Object} JsonBody - e.g. { email: this.input.email, password: this.input.password }
+ * @param {Object} params - key,val-object { foo: 'bar', bar: 'foo' }, can be a nested object
  * 
- * #### Helps to fetch or send data within this application
+ * #### Helps to fetch or send data within this application via API
+ * @TODO: implement more cool features here
  */
-function appApi(method, route, JsonBody) {
+function appApi(method, route, params) {
   if (method && route) {
     fetch(route, {
       method: method,
@@ -15,7 +16,7 @@ function appApi(method, route, JsonBody) {
         'Content-Type': 'application/json'
       },
 
-      body: JSON.stringify(JsonBody)
+      body: JSON.stringify(params)
     })
   }
 }

@@ -2,12 +2,12 @@
   <div>
     <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          Vote für deine Lieblingsstatistiken
-        </h2>
-        <p class="mt-3 text-xl text-gray-500 sm:mt-4">
-          Deine Entscheidungen beeinflussen welche Inhalte angezeigt werden.
-        </p>
+        <h2 
+          class="text-3xl font-extrabold text-gray-900 sm:text-4xl"
+          v-text="text.headline" />
+        <p 
+          class="mt-3 text-xl text-gray-500 sm:mt-4"
+          v-text="text.subHeadline" />
       </div>
 
       <dl class="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -49,8 +49,12 @@ export default {
   props: {
     stats: {
       type: Object,
-      required: true,
-      default: () => {}
+      required: true
+    },
+
+    text: {
+      type: Object,
+      required: true
     }
   },
 

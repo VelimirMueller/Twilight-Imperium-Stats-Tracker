@@ -51,20 +51,15 @@ export default {
     LoginAndRegisterModal
   },
 
+  props: {
+    text: {
+      type: Object,
+      required: true
+    }
+  },
+
   data () {
     return {
-      text: {
-        hero: {
-          headline: 'Twilight Imperium',
-          subHeadline: 'Stats Tracker',
-          paragraph: 'Finde heraus mit welchen Fraktionen du am besten bist, welche Spieler am gefährlichsten sind und schmiede geheime Bündnisse'
-        },
-        button: {
-          login: 'Login',
-          register: 'Registrieren'
-        }
-        
-      },
       isModal: false
     }
   },
