@@ -1,3 +1,5 @@
+/*eslint no-undef: 0*/
+
 let Encore = require('@symfony/webpack-encore');
 const PurgeCssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob-all');
@@ -59,7 +61,9 @@ Encore
         config.corejs = 3;
     })
 
-    .enableVueLoader(() => { }, { runtimeCompilerBuild: true })
+    .enableVueLoader(() => { }, {
+        runtimeCompilerBuild: true
+    })
 
     // enables Sass/SCSS support
     .enableSassLoader()
@@ -81,7 +85,9 @@ Encore
             path.join(__dirname, 'templates/**/*.html.twig'),
             path.join(__dirname, 'components/**/*.vue'),
         ]),
-        content: ["**/*.html"],
+        content: [
+            '**/*.html'
+        ],
         defaultExtractor: (content) => {
             return content.match(/[\w-/:]+(?<!:)/g) || [];
         }
@@ -89,7 +95,7 @@ Encore
 
     .enablePostCssLoader((options) => {
         options.postcssOptions = {
-            config: './postcss.config.js'
+            config: 'src/infrastructure/js/webpack/plugins/postcss.config.js'
         };
     })
     

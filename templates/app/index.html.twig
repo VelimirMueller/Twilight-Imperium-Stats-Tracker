@@ -3,7 +3,7 @@
 {% block headline %}{% endblock headline %}
 
 {% block body %}
-    <index :page-vars="{{ pageVars | json_encode }}"></index>
+    <index-wrapper :page-vars="{{ pageVars | json_encode }}"></index-wrapper>
 {% endblock body %}
 
 {% block javascripts %}
