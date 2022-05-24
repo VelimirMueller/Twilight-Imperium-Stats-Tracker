@@ -69,7 +69,9 @@ const CONFIG = {
     lastGames: {
       paths: [
         '/img/the-emirates-of-hacan.png',
-        '/img/the-mahact-gene-sorcerers.png'
+        '/img/the-mahact-gene-sorcerers.png',
+        '/img/the-yin-brotherhood.png',
+        '/img/the-l1z1x-mindnet.png'
       ]
     }
   }

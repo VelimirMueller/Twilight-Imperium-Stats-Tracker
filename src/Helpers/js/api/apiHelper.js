@@ -18,6 +18,11 @@ function appApi(method, route, params) {
 
       body: JSON.stringify(params)
     })
+      /* eslint-disable no-console */
+      .catch((e) => {
+        console.log(e)
+      })
+      /* eslint-enable no-console */
   }
 }
 

@@ -2,11 +2,16 @@
   <div
     id="modal"
     :class="hidden ? 'hidden fixed h-12 transition-full w-screen duration-500 inset-0' : 'inset-0 fixed flex justify-center items-center bg-gray-900 bg-opacity-90 w-78 h-78 transition-full duration-500 '">
-    <div class="text-white md:w-1/2 md:h-1/2 w-11/12 h-4/5 border z-0 flex justify-center items-center bg-white fixed">
+    <div
+      class="bg-cover bg-no-repeat bg-center bg-opacity-70 text-white md:w-1/2 md:h-1/2 w-11/12 h-4/5 border z-0 flex justify-center items-center bg-white fixed"
+      :style="image">
       <form class="flex flex-col justify-center w-4/5">
+        <h1 class="w-full text-4xl font-bold text-purple-100 mb-4">
+          LOGIN
+        </h1>
         <div
           class="cursor-pointer fixed top-0 right-0 w-12 h-12 rounded-full bg-red-700 mr-4 mt-4 flex justify-center items-center"
-          @click="closeModal">
+          @click="$emit('close-modal-in-parent')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-8 w-8"
@@ -75,7 +80,7 @@ export default {
   },
 
   emits: [
-    'close-modal'
+    'close-modal-in-parent'
   ],
 
   data () {
@@ -83,7 +88,16 @@ export default {
       input: {
         email: '',
         password: ''
+      },
+      image: {
+        backgroundImage: 'url(https://i.pinimg.com/originals/fd/f2/35/fdf2355de324ca3b61620f782e74c94b.jpg)'
       }
+    }
+  },
+
+  computed: {
+    isHidden () {
+      return !this.hidden
     }
   },
 
@@ -98,8 +112,8 @@ export default {
       this.input.password === '' ? pwElement.classList.add('animate-bounce') : pwElement.classList.remove('animate-bounce')
     },
 
-    closeModal () {
-      document.getElementById('modal').classList.add('hidden')
+    closeModal() {
+      this.$emit('close-modal-in-parent');
     },
 
     login () {
@@ -120,9 +134,6 @@ export default {
   mounted () {
     document.getElementById('email').addEventListener('click', this.animateMail)
     document.getElementById('password').addEventListener('click', this.animatePw)
-    this.$emit('close-modal', () => {
-      this.closeModal()
-    })
   }
 }
 </script>

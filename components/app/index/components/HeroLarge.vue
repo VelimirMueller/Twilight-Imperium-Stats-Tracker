@@ -32,13 +32,15 @@
             <button
               href="#" 
               class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
-              @click="closeModal"
+              @closeModal="updateparent"
               v-text="text.button.register" />
           </div>
         </div>
       </div>
     </div>
-    <login-and-register-modal :hidden="!isModal" />
+    <login-and-register-modal
+      :hidden="!isModal"
+      @close-modal-in-parent="closeModal" />
   </div>
 </template>
 <script>
@@ -66,12 +68,10 @@ export default {
 
   methods: {
     openModal () {
-      document.getElementById('modal').classList.remove('hidden')
       this.isModal = true
     },
 
     closeModal () {
-      document.getElementById('modal').classList.add('hidden')
       this.isModal = false
     }
   }
