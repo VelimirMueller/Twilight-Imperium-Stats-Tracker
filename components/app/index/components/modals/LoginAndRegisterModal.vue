@@ -122,7 +122,6 @@ export default {
         password: this.input.password
       }
       appApi('POST', '/login', requestBody)
-      
       this.resetForm()
     },
 
