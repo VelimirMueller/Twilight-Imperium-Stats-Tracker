@@ -12,7 +12,7 @@
       <div 
         v-for="(cardPath, idx) in cardPaths"
         :key="idx"
-        class="bg-white rounded-md h-72 w-4/5 lg:w-2/6 mb-4 mr-0 lg:m-6 md:mx-12 mb-8 mb-2 lg:mr-0 lg:mb-8">
+        class="bg-white rounded-md h-72 w-4/5 lg:w-2/6 mr-0  md:mx-12 my-12 lg:mr-0 lg:mx-8">
         <div class="h-1/3 flex-col w-full bg-yellow-200">
           <!-- Faction won -->
           <img 
@@ -71,9 +71,6 @@
                 class="h-24 w-24 rounded-md"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt="">
-              <span class="absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 block border-2 border-white rounded-full">
-                <span class="block h-4 w-4 rounded-full bg-gray-300" />
-              </span>
             </span>
             <p v-text="text.points" />
             <hr class="w-4/5 border-gray-300 my-2">
