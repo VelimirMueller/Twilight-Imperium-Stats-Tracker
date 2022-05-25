@@ -121,7 +121,8 @@ export default {
         email: this.input.email,
         password: this.input.password
       }
-      appApi('POST', '/', requestBody)
+      appApi('POST', '/login', requestBody)
+      
       this.resetForm()
     },
 
