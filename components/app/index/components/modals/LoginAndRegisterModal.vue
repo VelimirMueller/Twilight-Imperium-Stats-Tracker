@@ -28,27 +28,27 @@
         <span class="flex items-center justify-end h-12 relative">
           <label
             id="emailLabel"
-            :class="input.email !== '' ? 'opacity-0 flex justify-center items-center border-indigo-500 relative transition-full duration-700 delay-200 w-0 rounded-l-full h-12 border' : 'opacity-100 relative transition-full duration-500 border-indigo-500 h-12 bg-gray-900 md:1/4 w-2/5 md:font-bold font-lg flex justify-center items-center rounded-l-full border-2 border-white border-opacity-100'"
+            :class="requestData.email !== '' ? 'opacity-0 flex justify-center items-center border-indigo-500 relative transition-full duration-700 delay-200 w-0 rounded-l-full h-12 border' : 'opacity-100 relative transition-full duration-500 border-indigo-500 h-12 bg-gray-900 md:1/4 w-2/5 md:font-bold font-lg flex justify-center items-center rounded-l-full border-2 border-white border-opacity-100'"
             for="email"
             v-text="'Email'" />
           <input
             id="email"
-            v-model="input.email" 
-            :class="input.email !== '' ? 'w-full rounded-full h-12 bg-indigo-50 text-gray-900 border-gray-900' : 'w-full rounded-r-full h-12 bg-indigo-50 text-gray-900 border-gray-900'"
+            v-model="requestData.email" 
+            :class="requestData.email !== '' ? 'w-full rounded-full h-12 bg-indigo-50 text-gray-900 border-gray-900' : 'w-full rounded-r-full h-12 bg-indigo-50 text-gray-900 border-gray-900'"
             name="email"
             type="text">
         </span>
         <span class="flex items-center h-12 justify-end my-4 relative">
           <label
             id="passwordLabel"
-            :class="input.password !== '' ? 'opacity-0 flex justify-center items-center relative transition-full duration-700 delay-200 w-0 h-12 border border-gray-900' : 'opacity-100 relative transition-full duration-500 h-12 bg-indigo-400 md:1/4 w-2/5 md:font-bold font-lg flex justify-center items-center rounded-l-full border text-gray-100 border-white border-gray-900'"
+            :class="requestData.password !== '' ? 'opacity-0 flex justify-center items-center relative transition-full duration-700 delay-200 w-0 h-12 border border-gray-900' : 'opacity-100 relative transition-full duration-500 h-12 bg-indigo-400 md:1/4 w-2/5 md:font-bold font-lg flex justify-center items-center rounded-l-full border text-gray-100 border-white border-gray-900'"
             for="password"
             v-text="'password'" />
           <input
             id="password" 
             key=""
-            v-model="input.password"
-            :class="input.password !== '' ? 'w-full rounded-full h-12 bg-indigo-50 text-gray-900 border-gray-900' : 'w-full rounded-r-full h-12 bg-indigo-50 text-gray-900 border-indigo-500'"
+            v-model="requestData.password"
+            :class="requestData.password !== '' ? 'w-full rounded-full h-12 bg-indigo-50 text-gray-900 border-gray-900' : 'w-full rounded-r-full h-12 bg-indigo-50 text-gray-900 border-indigo-500'"
             name="password" 
             type="password">
         </span>
@@ -58,6 +58,9 @@
             @click.prevent="login"
             v-text="'login'" />
         </span>
+        <div 
+          class="w-full h-12 bg-white"
+          v-text="requestData.response" />
       </form>
     </div>
   </div>
@@ -85,7 +88,7 @@ export default {
 
   data () {
     return {
-      input: {
+      requestData: {
         email: '',
         password: ''
       },
@@ -104,12 +107,12 @@ export default {
   methods: {
     animateMail () {
       const mailElement = document.getElementById('emailLabel')
-      this.input.email === '' ? mailElement.classList.add('animate-bounce') : mailElement.classList.remove('animate-bounce')
+      this.requestData.email === '' ? mailElement.classList.add('animate-bounce') : mailElement.classList.remove('animate-bounce')
     },
 
     animatePw () {
       const pwElement = document.getElementById('passwordLabel')
-      this.input.password === '' ? pwElement.classList.add('animate-bounce') : pwElement.classList.remove('animate-bounce')
+      this.requestData.password === '' ? pwElement.classList.add('animate-bounce') : pwElement.classList.remove('animate-bounce')
     },
 
     closeModal() {
@@ -118,16 +121,17 @@ export default {
 
     login () {
       const requestBody = {
-        email: this.input.email,
-        password: this.input.password
+        email: this.requestData.email,
+        password: this.requestData.password
       }
+
       appApi('POST', '/login', requestBody)
       this.resetForm()
     },
 
     resetForm () {
-      this.input.email = ''
-      this.input.password = ''
+      this.requestData.email = ''
+      this.requestData.password = ''
     }
   },
 
