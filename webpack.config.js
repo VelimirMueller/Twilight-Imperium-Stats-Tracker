@@ -27,7 +27,7 @@ Encore
      */
     .addEntry('app', './src/infrastructure/js/app.js')
     .addEntry('app_index', './src/infrastructure/js/entrypoints/app_index.js')
-
+    .addEntry('app_main', './src/infrastructure/js/entrypoints/app_main.js')
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./src/infrastructure/js/controllers.json')
 
@@ -83,7 +83,7 @@ Encore
     .addPlugin(new PurgeCssPlugin({
         paths: glob.sync([
             path.join(__dirname, 'templates/**/*.html.twig'),
-            path.join(__dirname, 'components/**/*.vue'),
+            path.join(__dirname, 'components/**/*.vue')
         ]),
         content: [
             '**/*.html'

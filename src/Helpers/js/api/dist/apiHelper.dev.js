@@ -1,3 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.appApi = appApi;
+
 /**
  * 
  * @param {String} method - possible methods: GET, POST
@@ -18,9 +25,16 @@
  */
 
 /* eslint-disable object-curly-newline */
-function appApi(method, route, params, redirectOnSuccess = { redirect: false, redirectRoute: '' }, isForm = false) {
-/* eslint-enable object-curly-newline */
-  console.log('appApi started')
+function appApi(method, route, params) {
+  var redirectOnSuccess = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {
+    redirect: false,
+    redirectRoute: ''
+  };
+  var isForm = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+
+  /* eslint-enable object-curly-newline */
+  console.log('appApi started');
+
   if (method && route) {
     fetch(route, {
       method: method,
@@ -29,22 +43,15 @@ function appApi(method, route, params, redirectOnSuccess = { redirect: false, re
         'Content-Type': isForm ? 'application/x-www-form-urlencoded' : 'application/json;charset=UTF-8'
       },
       body: JSON.stringify(params)
-    })
-      .then(response => {
-        if (redirectOnSuccess.redirect && response.ok) {
-          window.location.replace(redirectOnSuccess.redirectRoute)
-        }
-      })
-
-      .catch((e) => {
-        console.log(e)
-      })
-
-      .finally(() => {
-        console.log('finally appApiEnded')
-      })
+    }).then(function (response) {
+      if (redirectOnSuccess.redirect && response.ok) {
+        window.location.replace(redirectOnSuccess.redirectRoute);
+      }
+    })["catch"](function (e) {
+      console.log(e);
+    })["finally"](function () {
+      console.log('finally appApiEnded');
+    });
   }
 }
-
 /* eslint-disable object-curly-newline */
-export { appApi }
