@@ -58,9 +58,6 @@
             @click.prevent="login"
             v-text="'login'" />
         </span>
-        <div 
-          class="w-full h-12 bg-white"
-          v-text="requestData.response" />
       </form>
     </div>
   </div>
@@ -125,8 +122,14 @@ export default {
         password: this.requestData.password
       }
 
-      appApi('POST', '/login', requestBody)
+      const redirect = {
+        redirect: true,
+        redirectRoute: '/app'
+      }
+
+      appApi('POST', '/login', requestBody, redirect)
       this.resetForm()
+      
     },
 
     resetForm () {
