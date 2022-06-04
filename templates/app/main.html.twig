@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block navbar %}{% endblock navbar %}
+{% block headline %}{% endblock headline %}
+
+{% block body %}
+    <main-wrapper :page-vars="{{ pageVars | json_encode }}"></main-wrapper>
+{% endblock body %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app_main') }}
+{% endblock %}

@@ -22,4 +22,26 @@ class AppController extends AbstractController
             'pageVars' => $pageVars
         ]);
     }
+
+    /**
+     * @Route("/app", name="app_main")
+     */
+    public function main(): Response
+    {
+        $pageVars = array(
+            "title" => "Main",
+            "headline" => "| Overview |"
+        );
+
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->render('app/main.html.twig', [
+                'username' => $this->getUser()->getUserIdentifier(),
+                'pageVars' => $pageVars
+            ]);
+        }
+
+        return $this->render('error/authError.html.twig', [
+            'error' => 'not authenticated, please login !'
+        ]);
+    }
 }
