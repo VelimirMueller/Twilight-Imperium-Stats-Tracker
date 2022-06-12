@@ -40,6 +40,7 @@
     "newline-before-return": "error",
     "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
     "vue/require-prop-types": "error",
+    "vue/first-attribute-linebreak": "error",
     "vue/attributes-order": "error",
     "vue/this-in-template": "error",
     "vue/script-indent": ["error", 2, { "baseIndent": 0 }],
